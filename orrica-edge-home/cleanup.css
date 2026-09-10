@@ -1,0 +1,3 @@
+/* Remove legacy sticky contact strip left by the old footer. */
+#site-footer ~ div{display:none!important}
+.footer-bottom,.footer-top,.footer-contact,.contact-strip,.sticky-contact,.bottom-contact{display:none!important}
