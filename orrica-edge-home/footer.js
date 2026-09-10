@@ -1,10 +1,42 @@
 (function(){
-  var old=document.querySelector('.footer');if(old)old.remove();
+  var mount=document.querySelector('#site-footer');
+  if(!mount)return;
+
+  // Remove every previous footer implementation so only the new uploaded design remains.
+  document.querySelectorAll('.footer,.rich-footer,.rf-cta,.rf-main,.rf-bottom').forEach(function(el){el.remove();});
   document.querySelectorAll('body>div').forEach(function(el){if((el.textContent||'').trim().startsWith('Connect:'))el.remove();});
-  var mount=document.querySelector('#site-footer');if(!mount)return;
-  mount.innerHTML='<footer class="rich-footer"><div class="rf-cta"><div><h2>Build your next great team.</h2><p>Find the right people. Hire faster. Grow better.</p></div><div class="rf-actions"><a class="rf-btn rf-primary" href="contact.html">Hire Talent <span>↗</span></a><a class="rf-btn rf-secondary" href="mailto:info@orricaedge.com">Talk to Us <span>↗</span></a></div></div><div class="rf-main"><div class="rf-brand"><a class="rf-logo" href="/" aria-label="ORRICAEDGE Home"><img src="assets/orrica-edge-logo.png" alt="Orrica Edge"></a><strong>People. Talent. Growth.</strong><p>Intelligent recruitment solutions that connect exceptional people with exceptional opportunities.</p><div class="rf-social"><a href="https://github.com/gautambetu540-droid/orrica-edge-frontend" target="_blank" aria-label="GitHub">GH</a><a href="https://www.linkedin.com/in/sudhanshu-g-512937375/" target="_blank" aria-label="LinkedIn">in</a><a href="mailto:info@orricaedge.com" aria-label="Email">✉</a><a href="https://wa.me/919753791491" target="_blank" aria-label="WhatsApp">◔</a><a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank" aria-label="WhatsApp Channel">◔</a></div></div><div class="rf-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#process">Our Process</a><a href="jobs.html">Careers</a><a href="contact.html">Contact Us</a><a href="/admin/login">Workspace Login</a></div><div class="rf-col"><h4>Solutions</h4><a href="index.html#services">BPO Recruitment</a><a href="index.html#services">Banking / BFSI Hiring</a><a href="index.html#services">Sales &amp; Collections</a><a href="index.html#services">Bulk Hiring</a><a href="index.html#services">Non-Voice Hiring</a><a href="index.html#services">Customer Support</a></div><div class="rf-col"><h4>Connect</h4><a href="mailto:sudhanshu@orricaedge.com">sudhanshu@orricaedge.com</a><a href="mailto:info@orricaedge.com">info@orricaedge.com</a><a href="tel:+919753791491">+91 97537 91491</a><a href="https://wa.me/919753791491" target="_blank">Chat on WhatsApp ↗</a><a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank">WhatsApp Channel ↗</a></div></div><div class="rf-bottom"><b>ORRICAEDGE</b><span>© 2026 ORRICAEDGE. All rights reserved&nbsp;&nbsp; | &nbsp;&nbsp;<a href="terms.html">Terms &amp; Conditions</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="privacy.html">Privacy Policy</a></span><em>Made for better hiring.</em></div></footer>';
-  var s=document.createElement('style');s.id='orrica-footer-reference';s.textContent='.rich-footer{display:block!important;width:100%;box-sizing:border-box;background:linear-gradient(112deg,#081b3a 0%,#12366d 100%);color:#fff;font-family:Manrope,Arial,sans-serif;overflow:hidden}.rich-footer,.rich-footer *{box-sizing:border-box}.rich-footer a{font-family:inherit}.rf-cta,.rf-main,.rf-bottom{width:min(1515px,100%);margin:0 auto}.rf-cta{padding:66px 58px 50px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid rgba(255,255,255,.15)}.rf-cta h2{margin:0 0 13px;color:#fff;font-family:Manrope,Arial,sans-serif;font-size:clamp(40px,4.25vw,67px);font-weight:800;line-height:1.03;letter-spacing:-.055em}.rf-cta p{margin:0;color:#aec4df;font-size:18px;line-height:1.5;font-weight:400}.rf-actions{display:flex;gap:14px;flex-wrap:wrap}.rf-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:10px;padding:18px 28px;border-radius:999px;text-decoration:none!important;font-size:17px;font-weight:800;line-height:1;white-space:nowrap;transition:transform .2s ease}.rf-btn:hover{transform:translateY(-2px)}.rf-primary{background:#ff6b2c;color:#fff!important}.rf-secondary{border:1px solid rgba(255,255,255,.36);background:transparent;color:#fff!important}.rf-main{padding:62px 58px 54px;display:grid;grid-template-columns:1.55fr .95fr 1.05fr 1.15fr;gap:58px}.rf-logo{display:block;width:max-content;line-height:0;margin-bottom:48px}.rf-logo img{display:block;width:185px;height:60px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}.rf-brand strong{display:block;margin-bottom:19px;color:#fff;font-family:Manrope,Arial,sans-serif;font-size:25px;font-weight:800;line-height:1.2;letter-spacing:-.035em}.rf-brand p{max-width:470px;margin:0;color:#aec2dc;font-size:17px;line-height:1.7}.rf-social{display:flex;gap:12px;margin-top:34px}.rf-social a{width:51px;height:51px;display:inline-flex!important;align-items:center;justify-content:center;margin:0!important;border:1px solid rgba(255,255,255,.38);border-radius:50%;color:#fff!important;text-decoration:none!important;font-size:16px;font-weight:800}.rf-col h4{margin:2px 0 25px;color:#ff6b2c;font-size:17px;font-weight:800;line-height:1.2;text-transform:uppercase;letter-spacing:.01em}.rf-col a{display:block!important;margin:0 0 18px;color:#b9cbe2!important;text-decoration:none!important;font-size:17px;font-weight:400;line-height:1.3}.rf-col a:hover{color:#fff!important}.rf-bottom{padding:20px 58px 28px;border-top:1px solid rgba(255,255,255,.15);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;color:#91a9c8;font-size:14px}.rf-bottom b{color:#fff;font-size:19px;font-weight:800}.rf-bottom a{color:#a9bbd2!important;text-decoration:none}.rf-bottom em{color:#91a9c8;font-style:normal;white-space:nowrap}.footer,.footer-top,.footer-bottom{display:none!important}@media(max-width:900px){.rf-cta{display:block;padding:48px 28px}.rf-actions{margin-top:25px}.rf-main{grid-template-columns:1fr 1fr;padding:45px 28px;gap:35px}.rf-bottom{grid-template-columns:1fr;padding:18px 28px}.rf-bottom em{white-space:normal}}@media(max-width:600px){.rf-cta h2{font-size:39px}.rf-cta p{font-size:15px}.rf-btn{width:100%;font-size:14px}.rf-main{grid-template-columns:1fr;padding:38px 22px}.rf-logo{margin-bottom:32px}.rf-brand strong{font-size:21px}.rf-brand p,.rf-col a{font-size:14px}.rf-col h4{font-size:13px}.rf-social a{width:44px;height:44px}.rf-bottom{padding:16px 22px;font-size:11px}.rf-bottom b{font-size:16px}}';document.head.appendChild(s);
-  function login(){var nav=document.querySelector('.hero header .nav');if(!nav)return;if(!nav.querySelector('.workspace-login')){var a=document.createElement('a');a.className='button light workspace-login';a.href='/admin/login';a.innerHTML='Workspace Login <span>↗</span>';var hire=nav.querySelector('.button.orange');hire?nav.insertBefore(a,hire):nav.appendChild(a)}}
-  function logos(){document.querySelectorAll('.rf-logo,header .brand').forEach(function(a){a.href='/';})}
-  login();logos();setTimeout(login,150);setTimeout(login,600);setTimeout(logos,150);setTimeout(logos,600);
+  mount.innerHTML='';
+  mount.style.display='block';
+  mount.style.width='100%';
+
+  // Load the uploaded footer as an isolated Shadow DOM so its Sora/Inter typography
+  // cannot overwrite the main website's fonts or layout.
+  var root=mount.shadowRoot||mount.attachShadow({mode:'open'});
+  fetch('/orrica-edge-home/footer-template.html',{cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('Footer template unavailable');return r.text();})
+    .then(function(source){
+      var doc=new DOMParser().parseFromString(source,'text/html');
+      var style=doc.querySelector('style');
+      var footer=doc.querySelector('footer');
+      if(!style||!footer)throw new Error('Invalid footer template');
+      var css=style.textContent.replace(/:root\s*\{/,' :host{').replace(/\n\s*body\{[\s\S]*?\}\s*/,'\n');
+      root.innerHTML='';
+      var font=document.createElement('link');
+      font.rel='stylesheet';
+      font.href='https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap';
+      document.head.appendChild(font);
+      var sheet=document.createElement('style');sheet.textContent=css;root.appendChild(sheet);
+      root.appendChild(footer);
+
+      // Ensure the ORRICAEDGE brand always returns to the homepage.
+      var brand=root.querySelector('.footer-home-link');
+      if(brand)brand.href='/';
+      // Keep all required workspace/contact actions working.
+      var workspace=root.querySelector('a[href="/admin/login"]');
+      if(workspace)workspace.href='/admin/login';
+    })
+    .catch(function(err){
+      console.error('ORRICAEDGE footer:',err);
+      mount.innerHTML='';
+    });
 })();
