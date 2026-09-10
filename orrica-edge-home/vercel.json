@@ -1,6 +1,29 @@
 {
   "rewrites": [
+    { "source": "/jobs", "destination": "/jobs.html" },
+    { "source": "/jobs/", "destination": "/jobs.html" },
+    { "source": "/job", "destination": "/job.html" },
     { "source": "/api/jobs", "destination": "/data/jobs.json" },
     { "source": "/assets/orrica-edge-logo.png", "destination": "/assets/orrica-edge-logo-white-wrapper.svg" }
+  ],
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Link", "value": "</header-fix.css>; rel=stylesheet" }
+      ]
+    },
+    {
+      "source": "/jobs",
+      "headers": [
+        { "key": "Link", "value": "</header-fix.css>; rel=stylesheet" }
+      ]
+    },
+    {
+      "source": "/jobs.html",
+      "headers": [
+        { "key": "Link", "value": "</header-fix.css>; rel=stylesheet" }
+      ]
+    }
   ]
 }
