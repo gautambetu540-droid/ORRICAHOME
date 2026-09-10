@@ -19,6 +19,8 @@
     {"source":"/terms.html","destination":"/orrica-edge-home/terms.html"},
     {"source":"/privacy","destination":"/orrica-edge-home/privacy.html"},
     {"source":"/privacy.html","destination":"/orrica-edge-home/privacy.html"},
+    {"source":"/cookies","destination":"/orrica-edge-home/cookies.html"},
+    {"source":"/cookies.html","destination":"/orrica-edge-home/cookies.html"},
     {"source":"/data/:path*","destination":"/orrica-edge-home/data/:path*"},
     {"source":"/header-fix.css","destination":"/orrica-edge-home/header-fix.css"},
     {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
