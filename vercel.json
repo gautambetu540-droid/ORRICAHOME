@@ -4,8 +4,15 @@
   ],
   "rewrites": [
     {"source":"/","destination":"/orrica-edge-home/index.html"},
+    {"source":"/jobs","destination":"/orrica-edge-home/jobs.html"},
+    {"source":"/jobs/","destination":"/orrica-edge-home/jobs.html"},
     {"source":"/jobs.html","destination":"/orrica-edge-home/jobs.html"},
     {"source":"/jobs.js","destination":"/orrica-edge-home/jobs.js"},
+    {"source":"/job","destination":"/orrica-edge-home/job.html"},
+    {"source":"/job.html","destination":"/orrica-edge-home/job.html"},
+    {"source":"/job.js","destination":"/orrica-edge-home/job.js"},
+    {"source":"/data/:path*","destination":"/orrica-edge-home/data/:path*"},
+    {"source":"/header-fix.css","destination":"/orrica-edge-home/header-fix.css"},
     {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
     {"source":"/assets/:path*","destination":"/orrica-edge-home/assets/:path*"},
     {"source":"/admin","destination":"https://orrica-edge-frontend-jana.vercel.app/admin"},
@@ -15,8 +22,12 @@
   ],
   "headers": [
     {
-      "source":"/orrica-edge-home/index.html",
-      "headers":[{"key":"Link","value":"</orrica-edge-home/cleanup.css>; rel=stylesheet"}]
+      "source":"/",
+      "headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]
+    },
+    {
+      "source":"/jobs",
+      "headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]
     }
   ]
 }
