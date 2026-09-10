@@ -1,3 +1,11 @@
-/* Remove the legacy contact bar/old footer elements that may still exist after the rich footer. */
+/* Footer cleanup only — do not change the site's global typography. */
 #site-footer ~ *{display:none!important}
 .footer-bottom,.footer-top,.footer-contact,.contact-strip,.sticky-contact,.bottom-contact{display:none!important}
+/* Keep the original homepage typography intact; footer typography is scoped to .rich-footer. */
+body{font-family:inherit!important}
+body>*:not(#site-footer){font-family:inherit}
+.rich-footer{font-family:Manrope,Arial,sans-serif}
+.rich-footer .footer-cta h2,.rich-footer .footer-brand strong{font-family:"Space Grotesk",Manrope,Arial,sans-serif}
+.rich-footer h4{font-family:Manrope,Arial,sans-serif}
+/* Logo is a real home link. */
+.footer-logo-home{cursor:pointer}
