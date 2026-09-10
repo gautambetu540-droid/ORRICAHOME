@@ -7,14 +7,14 @@
     var fav=document.createElement('link');
     fav.rel='icon';
     fav.type='image/svg+xml';
-    fav.href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23081b3a'/%3E%3Cpath d='M20 40 L32 22 L44 40' stroke='%23ff6b2c' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='32' cy='46' r='3.4' fill='%23ff6b2c'/%3E%3C/svg%3E";
+    fav.href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1226'/%3E%3Cpath d='M20 40 L32 22 L44 40' stroke='%23ff6b3d' stroke-width='5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='32' cy='46' r='3.4' fill='%23ff6b3d'/%3E%3C/svg%3E";
     document.head.appendChild(fav);
   }
 
   var mount=document.querySelector('#site-footer');if(!mount)return;
 
   // --- Icon set (inline SVG, crisp at any size, inherits currentColor) ---
-  var ICON_ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+  var ICON_ARROW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
   var ICON_GITHUB='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12.05c0 5.08 3.29 9.38 7.86 10.9.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.78 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a10.9 10.9 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.6.24 2.77.12 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.68.42.36.78 1.07.78 2.16v3.2c0 .3.2.66.79.55A10.55 10.55 0 0 0 23.5 12.05C23.5 5.73 18.27.5 12 .5Z"/></svg>';
   var ICON_LINKEDIN='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>';
   var ICON_MAIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3.5 6.5 8.5 6.2 8.5-6.2"/></svg>';
@@ -22,11 +22,178 @@
   var ICON_CHANNEL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M14.5 5.5a8 8 0 0 1 0 13"/><path d="M12.2 8a4 4 0 0 1 0 8"/></svg>';
   var ICON_PHONE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.9.7 2.7a2 2 0 0 1-.4 2.1L8.1 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.8 2.1z"/></svg>';
 
-  mount.innerHTML='<footer class="rich-footer"><div class="rf-glow-a"></div><div class="rf-glow-b"></div><div class="rf-cta"><div><span class="rf-eyebrow">Let\'s work together</span><h2>Build your next great team.</h2><p>Find the right people. Hire faster. Grow better.</p></div><div class="rf-actions"><a class="rf-btn rf-primary" href="contact.html">Hire Talent <span>'+ICON_ARROW+'</span></a><a class="rf-btn rf-secondary" href="mailto:info@orricaedge.com">Talk to Us <span>'+ICON_ARROW+'</span></a></div></div><div class="rf-main"><div class="rf-brand"><a class="rf-logo" href="/" aria-label="ORRICAEDGE Home"><img src="assets/orrica-edge-logo.png" alt="Orrica Edge"></a><strong>People. Talent. Growth.</strong><p>Intelligent recruitment solutions that connect exceptional people with exceptional opportunities.</p><div class="rf-social"><a href="https://github.com/gautambetu540-droid/orrica-edge-frontend" target="_blank" aria-label="GitHub">'+ICON_GITHUB+'</a><a href="https://www.linkedin.com/in/sudhanshu-g-512937375/" target="_blank" aria-label="LinkedIn">'+ICON_LINKEDIN+'</a><a href="mailto:info@orricaedge.com" aria-label="Email">'+ICON_MAIL+'</a><a href="https://wa.me/919753791491" target="_blank" aria-label="WhatsApp">'+ICON_WHATSAPP+'</a><a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank" aria-label="WhatsApp Channel">'+ICON_CHANNEL+'</a></div></div><div class="rf-col"><h4>Company</h4><a href="about.html">About Us</a><a href="index.html#process">Our Process</a><a href="jobs.html">Careers</a><a href="contact.html">Contact Us</a><a href="/admin/login">Workspace Login</a></div><div class="rf-col"><h4>Solutions</h4><a href="index.html#services">BPO Recruitment</a><a href="index.html#services">Banking / BFSI Hiring</a><a href="index.html#services">Sales &amp; Collections</a><a href="index.html#services">Bulk Hiring</a><a href="index.html#services">Non-Voice Hiring</a><a href="index.html#services">Customer Support</a></div><div class="rf-col"><h4>Connect</h4><a href="mailto:sudhanshu@orricaedge.com"><span class="rf-ic">'+ICON_MAIL+'</span>sudhanshu@orricaedge.com</a><a href="tel:+919753791491"><span class="rf-ic">'+ICON_PHONE+'</span>+91 97537 91491</a><a href="https://wa.me/919753791491" target="_blank"><span class="rf-ic">'+ICON_WHATSAPP+'</span>Chat on WhatsApp</a><a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank"><span class="rf-ic">'+ICON_CHANNEL+'</span>WhatsApp Channel</a></div></div><div class="rf-bottom"><b>ORRICAEDGE</b><span>© 2026 ORRICAEDGE. All rights reserved&nbsp;&nbsp; | &nbsp;&nbsp;<a href="terms.html">Terms &amp; Conditions</a>&nbsp;&nbsp; | &nbsp;&nbsp;<a href="privacy.html">Privacy Policy</a></span><em>Made for better hiring.</em></div></footer>';
+  mount.innerHTML = `
+    <footer class="oe-footer">
+      <div class="oe-glow-a"></div>
+      <div class="oe-glow-b"></div>
+      <div class="oe-top-fade"></div>
+      <div class="oe-watermark">ORRICAEDGE</div>
 
-  var s=document.createElement('style');s.id='orrica-footer-reference';s.textContent='.rich-footer{position:relative;display:block!important;width:100%;box-sizing:border-box;background:linear-gradient(112deg,#081b3a 0%,#12366d 100%);color:#fff;font-family:Manrope,Arial,sans-serif;overflow:hidden}.rich-footer,.rich-footer *{box-sizing:border-box}.rich-footer a{font-family:inherit}.rf-glow-a{position:absolute;top:-220px;right:-160px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,44,.20),transparent 68%);pointer-events:none}.rf-glow-b{position:absolute;bottom:-240px;left:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(120,170,255,.14),transparent 70%);pointer-events:none}.rf-cta,.rf-main,.rf-bottom{position:relative;z-index:1;width:min(1515px,100%);margin:0 auto}.rf-cta{padding:66px 58px 50px;display:flex;align-items:center;justify-content:space-between;gap:40px;border-bottom:1px solid rgba(255,255,255,.15)}.rf-eyebrow{display:inline-flex;align-items:center;gap:8px;color:#ff8a52;font-size:14px;font-weight:700;margin-bottom:14px}.rf-eyebrow::before{content:"";width:16px;height:1px;background:#ff8a52}.rf-cta h2{margin:0 0 13px;color:#fff;font-family:Manrope,Arial,sans-serif;font-size:clamp(40px,4.25vw,67px);font-weight:800;line-height:1.03;letter-spacing:-.03em}.rf-cta p{margin:0;color:#aec4df;font-size:18px;line-height:1.5;font-weight:400}.rf-actions{display:flex;gap:14px;flex-wrap:wrap}.rf-btn{display:inline-flex!important;align-items:center;justify-content:center;gap:10px;padding:18px 28px;border-radius:999px;text-decoration:none!important;font-size:17px;font-weight:800;line-height:1;white-space:nowrap;transition:transform .2s ease,box-shadow .2s ease}.rf-btn span{display:inline-flex;width:16px;height:16px}.rf-btn span svg{width:100%;height:100%}.rf-btn:hover{transform:translateY(-2px)}.rf-primary{background:linear-gradient(135deg,#ff6b2c,#ff8f52);color:#fff!important;box-shadow:0 10px 26px -10px rgba(255,107,44,.65)}.rf-primary:hover{box-shadow:0 14px 30px -8px rgba(255,107,44,.8)}.rf-secondary{border:1px solid rgba(255,255,255,.36);background:transparent;color:#fff!important}.rf-secondary:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.05)}.rf-main{padding:62px 58px 54px;display:grid;grid-template-columns:1.55fr .95fr 1.05fr 1.15fr;gap:58px}.rf-logo{display:block;width:max-content;line-height:0;margin-bottom:48px}.rf-logo img{display:block;width:185px;height:60px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}.rf-brand strong{display:block;margin-bottom:19px;color:#fff;font-family:Manrope,Arial,sans-serif;font-size:25px;font-weight:800;line-height:1.2;letter-spacing:-.03em}.rf-brand p{max-width:470px;margin:0;color:#aec2dc;font-size:17px;line-height:1.7}.rf-social{display:flex;gap:12px;margin-top:34px}.rf-social a{position:relative;width:51px;height:51px;display:inline-flex!important;align-items:center;justify-content:center;margin:0!important;border:1px solid rgba(255,255,255,.38);border-radius:50%;color:#fff!important;text-decoration:none!important;overflow:hidden;transition:transform .2s ease,border-color .2s ease}.rf-social a svg{position:relative;z-index:1;width:20px;height:20px;transition:transform .2s ease}.rf-social a::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#ff6b2c,#ff8f52);opacity:0;transition:opacity .2s ease}.rf-social a:hover{transform:translateY(-3px);border-color:transparent}.rf-social a:hover::before{opacity:1}.rf-social a:hover svg{color:#0a1226}.rf-col h4{margin:2px 0 25px;color:#ff6b2c;font-size:17px;font-weight:800;line-height:1.2;letter-spacing:.01em}.rf-col a{display:flex!important;align-items:center;gap:10px;margin:0 0 18px;color:#b9cbe2!important;text-decoration:none!important;font-size:17px;font-weight:400;line-height:1.3;transition:color .15s ease}.rf-col a:hover{color:#fff!important}.rf-ic{display:inline-flex;width:16px;height:16px;flex-shrink:0;color:#ff8a52}.rf-ic svg{width:100%;height:100%}.rf-bottom{padding:20px 58px 28px;border-top:1px solid rgba(255,255,255,.15);display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;color:#91a9c8;font-size:14px}.rf-bottom b{color:#fff;font-size:19px;font-weight:800}.rf-bottom a{color:#a9bbd2!important;text-decoration:none}.rf-bottom em{color:#91a9c8;font-style:normal;white-space:nowrap}.footer,.footer-top,.footer-bottom{display:none!important}@media(max-width:900px){.rf-cta{display:block;padding:48px 28px}.rf-actions{margin-top:25px}.rf-main{grid-template-columns:1fr 1fr;padding:45px 28px;gap:35px}.rf-bottom{grid-template-columns:1fr;padding:18px 28px}.rf-bottom em{white-space:normal}}@media(max-width:600px){.rf-cta h2{font-size:39px}.rf-cta p{font-size:15px}.rf-btn{width:100%;font-size:14px}.rf-main{grid-template-columns:1fr;padding:38px 22px}.rf-logo{margin-bottom:32px}.rf-brand strong{font-size:21px}.rf-brand p,.rf-col a{font-size:14px}.rf-col h4{font-size:13px}.rf-social a{width:44px;height:44px}.rf-social a svg{width:17px;height:17px}.rf-bottom{padding:16px 22px;font-size:11px}.rf-bottom b{font-size:16px}}';document.head.appendChild(s);
+      <div class="oe-wrap">
+
+        <div class="oe-cta">
+          <div>
+            <div class="oe-eyebrow">Let's work together</div>
+            <h2>Build your next great team.</h2>
+            <p>Find the right people. Hire faster. Grow better.</p>
+          </div>
+          <div class="oe-cta-btns">
+            <a class="oe-btn oe-btn-primary" href="contact.html">Hire Talent <span>${ICON_ARROW}</span></a>
+            <a class="oe-btn oe-btn-ghost" href="mailto:info@orricaedge.com">Talk to Us</a>
+          </div>
+        </div>
+
+        <div class="oe-rule"></div>
+
+        <div class="oe-grid">
+
+          <div class="oe-brand">
+            <a class="oe-logo" href="/" aria-label="ORRICAEDGE Home"><img src="assets/orrica-edge-logo.png" alt="Orrica Edge"></a>
+            <div class="oe-tagline">People. Talent. Growth.</div>
+            <p class="oe-desc">Intelligent recruitment solutions that connect exceptional people with exceptional opportunities.</p>
+            <div class="oe-socials">
+              <a href="https://github.com/gautambetu540-droid/orrica-edge-frontend" target="_blank" aria-label="GitHub">${ICON_GITHUB}</a>
+              <a href="https://www.linkedin.com/in/sudhanshu-g-512937375/" target="_blank" aria-label="LinkedIn">${ICON_LINKEDIN}</a>
+              <a href="mailto:info@orricaedge.com" aria-label="Email">${ICON_MAIL}</a>
+              <a href="https://wa.me/919753791491" target="_blank" aria-label="WhatsApp">${ICON_WHATSAPP}</a>
+              <a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank" aria-label="WhatsApp Channel">${ICON_CHANNEL}</a>
+            </div>
+          </div>
+
+          <div class="oe-col">
+            <div class="oe-col-label">Company</div>
+            <ul class="oe-col-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="index.html#process">Our Process</a></li>
+              <li><a href="jobs.html">Careers</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="/admin/login">Workspace Login</a></li>
+            </ul>
+          </div>
+
+          <div class="oe-col">
+            <div class="oe-col-label">Solutions</div>
+            <ul class="oe-col-list">
+              <li><a href="index.html#services">BPO Recruitment</a></li>
+              <li><a href="index.html#services">Banking / BFSI Hiring</a></li>
+              <li><a href="index.html#services">Sales &amp; Collections</a></li>
+              <li><a href="index.html#services">Bulk Hiring</a></li>
+              <li><a href="index.html#services">Non-Voice Hiring</a></li>
+              <li><a href="index.html#services">Customer Support</a></li>
+            </ul>
+          </div>
+
+          <div class="oe-col">
+            <div class="oe-col-label">Connect</div>
+            <ul class="oe-col-list oe-connect-list">
+              <li class="oe-connect-item"><a href="mailto:sudhanshu@orricaedge.com"><span class="oe-ic">${ICON_MAIL}</span>sudhanshu@orricaedge.com</a></li>
+              <li class="oe-connect-item"><a href="tel:+919753791491"><span class="oe-ic">${ICON_PHONE}</span>+91 97537 91491</a><span class="oe-connect-note">Also on WhatsApp</span></li>
+              <li class="oe-connect-item"><a href="https://wa.me/919753791491" target="_blank"><span class="oe-ic">${ICON_WHATSAPP}</span>Chat on WhatsApp</a></li>
+              <li class="oe-connect-item"><a href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank"><span class="oe-ic">${ICON_CHANNEL}</span>WhatsApp Channel</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="oe-rule"></div>
+
+        <div class="oe-bottom">
+          <b>ORRICAEDGE</b>
+          <span>© 2026 ORRICAEDGE. All rights reserved &nbsp;|&nbsp; <a href="terms.html">Terms &amp; Conditions</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy Policy</a></span>
+          <em>Made for better hiring.</em>
+        </div>
+
+      </div>
+    </footer>
+  `;
+
+  var s=document.createElement('style');
+  s.id='orrica-footer-style';
+  s.textContent=`
+    .oe-footer{
+      --bg-0:#080e1f; --line:rgba(255,255,255,.09);
+      --ink:#f3f5fa; --ink-dim:#8c96b4; --ink-dimmer:#57628a;
+      --orange:#ff6b3d; --orange-2:#ff8552;
+      position:relative; display:block!important; width:100%; overflow:hidden;
+      box-sizing:border-box; background:var(--bg-0); color:var(--ink);
+      font-family:'Inter',Manrope,Arial,sans-serif; -webkit-font-smoothing:antialiased;
+      padding:88px 56px 0;
+    }
+    .oe-footer,.oe-footer *{box-sizing:border-box}
+    .oe-footer a{font-family:inherit}
+    .oe-glow-a{position:absolute;top:-220px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,61,.16),transparent 68%);pointer-events:none;z-index:0}
+    .oe-glow-b{position:absolute;bottom:-260px;left:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(76,110,255,.10),transparent 70%);pointer-events:none;z-index:0}
+    .oe-top-fade{position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,61,.55),transparent)}
+    .oe-watermark{position:absolute;right:-24px;bottom:-30px;font-family:Manrope,Arial,sans-serif;font-weight:800;font-size:170px;letter-spacing:-.03em;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.045);pointer-events:none;z-index:0;user-select:none;white-space:nowrap}
+    .oe-wrap{max-width:1320px;margin:0 auto;position:relative;z-index:1}
+
+    .oe-cta{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap;padding-bottom:52px}
+    .oe-eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:13.5px;font-weight:600;margin-bottom:14px}
+    .oe-eyebrow::before{content:"";width:16px;height:1px;background:var(--orange)}
+    .oe-cta h2{font-family:Manrope,Arial,sans-serif;font-weight:800;font-size:clamp(32px,4.2vw,54px);line-height:1.05;letter-spacing:-.02em;max-width:660px;margin:0}
+    .oe-cta p{margin-top:12px;color:var(--ink-dim);font-size:17px}
+    .oe-cta-btns{display:flex;gap:12px;flex-wrap:wrap}
+    .oe-btn{display:inline-flex!important;align-items:center;gap:8px;padding:15px 26px;border-radius:100px;font-weight:700;font-size:15px;text-decoration:none!important;white-space:nowrap;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease,background .18s ease}
+    .oe-btn span{display:inline-flex;width:15px;height:15px}
+    .oe-btn span svg{width:100%;height:100%}
+    .oe-btn:hover{transform:translateY(-2px)}
+    .oe-btn-primary{background:linear-gradient(135deg,var(--orange),var(--orange-2));color:#0a1226!important;box-shadow:0 8px 24px -8px rgba(255,107,61,.55)}
+    .oe-btn-primary:hover{box-shadow:0 12px 28px -8px rgba(255,107,61,.7)}
+    .oe-btn-ghost{border:1px solid rgba(255,255,255,.18);color:var(--ink)!important}
+    .oe-btn-ghost:hover{border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.04)}
+
+    .oe-rule{border-top:1px solid var(--line)}
+
+    .oe-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding:52px 0 60px}
+
+    .oe-logo{display:block;width:max-content;line-height:0;margin-bottom:22px}
+    .oe-logo img{display:block;width:170px;height:auto;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}
+    .oe-tagline{font-family:Manrope,Arial,sans-serif;font-weight:700;font-size:17px}
+    .oe-desc{color:var(--ink-dim);font-size:14.5px;line-height:1.65;max-width:300px;margin-top:10px}
+
+    .oe-socials{display:flex;gap:10px;margin-top:24px}
+    .oe-socials a{position:relative;width:40px;height:40px;display:inline-flex!important;align-items:center;justify-content:center;margin:0!important;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.02);color:var(--ink-dim)!important;text-decoration:none!important;overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+    .oe-socials a svg{position:relative;z-index:1;width:17px;height:17px;transition:transform .2s ease}
+    .oe-socials a::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--orange),var(--orange-2));opacity:0;transition:opacity .2s ease}
+    .oe-socials a:hover{transform:translateY(-3px);border-color:transparent}
+    .oe-socials a:hover::before{opacity:1}
+    .oe-socials a:hover svg{color:#0a1226;transform:scale(1.05)}
+
+    .oe-col-label{position:relative;display:inline-flex;align-items:center;gap:8px;font-family:Manrope,Arial,sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);margin:2px 0 22px}
+    .oe-col-label::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--orange);transform:rotate(45deg)}
+    .oe-col-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin:0;padding:0}
+    .oe-col-list a{color:var(--ink-dim)!important;text-decoration:none!important;font-size:14.5px;transition:color .15s ease,padding-left .15s ease;display:inline-flex;align-items:center;gap:8px}
+    .oe-col-list a:hover{color:var(--ink)!important;padding-left:5px}
+    .oe-ic{display:inline-flex;width:14px;height:14px;flex-shrink:0;color:var(--orange)}
+    .oe-ic svg{width:100%;height:100%}
+    .oe-connect-item{display:flex;flex-direction:column;gap:2px}
+    .oe-connect-note{color:var(--ink-dimmer);font-size:12px;margin-left:22px}
+
+    .oe-bottom{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:24px;padding:24px 0 30px;font-size:13px;color:var(--ink-dimmer)}
+    .oe-bottom b{color:var(--ink);font-size:18px;font-weight:800}
+    .oe-bottom a{color:var(--ink-dimmer)!important;text-decoration:none}
+    .oe-bottom a:hover{color:var(--ink-dim)!important}
+    .oe-bottom em{font-style:normal;white-space:nowrap;justify-self:end}
+
+    .footer,.footer-top,.footer-bottom{display:none!important}
+
+    @media (max-width:980px){
+      .oe-footer{padding:64px 28px 0}
+      .oe-grid{grid-template-columns:1fr 1fr;row-gap:40px}
+      .oe-watermark{font-size:86px}
+    }
+    @media (max-width:600px){
+      .oe-cta{display:block}
+      .oe-cta-btns{margin-top:22px}
+      .oe-btn{width:100%;justify-content:center}
+      .oe-grid{grid-template-columns:1fr}
+      .oe-bottom{grid-template-columns:1fr;text-align:left}
+      .oe-bottom em{justify-self:start}
+    }
+  `;
+  document.head.appendChild(s);
 
   function login(){var nav=document.querySelector('.hero header .nav');if(!nav)return;if(!nav.querySelector('.workspace-login')){var a=document.createElement('a');a.className='button light workspace-login';a.href='/admin/login';a.innerHTML='Workspace Login <span>↗</span>';var hire=nav.querySelector('.button.orange');hire?nav.insertBefore(a,hire):nav.appendChild(a)}}
-  function logos(){document.querySelectorAll('.rf-logo,header .brand').forEach(function(a){a.href='/';})}
+  function logos(){document.querySelectorAll('.oe-logo,header .brand').forEach(function(a){a.href='/';})}
   login();logos();setTimeout(login,150);setTimeout(login,600);setTimeout(logos,150);setTimeout(logos,600);
 })();
