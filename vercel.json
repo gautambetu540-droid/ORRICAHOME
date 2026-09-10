@@ -1,20 +1,13 @@
 {
   "rewrites": [
-    {
-      "source": "/admin",
-      "destination": "https://orrica-edge-frontend-jana.vercel.app/admin"
-    },
-    {
-      "source": "/admin/:path*",
-      "destination": "https://orrica-edge-frontend-jana.vercel.app/admin/:path*"
-    },
-    {
-      "source": "/_next/:path*",
-      "destination": "https://orrica-edge-frontend-jana.vercel.app/_next/:path*"
-    },
-    {
-      "source": "/api/backend/:path*",
-      "destination": "https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"
-    }
+    {"source":"/","destination":"/orrica-edge-home/index.html"},
+    {"source":"/jobs.html","destination":"/orrica-edge-home/jobs.html"},
+    {"source":"/jobs.js","destination":"/orrica-edge-home/jobs.js"},
+    {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
+    {"source":"/assets/:path*","destination":"/orrica-edge-home/assets/:path*"},
+    {"source":"/admin","destination":"https://orrica-edge-frontend-jana.vercel.app/admin"},
+    {"source":"/admin/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/admin/:path*"},
+    {"source":"/_next/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/_next/:path*"},
+    {"source":"/api/backend/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"}
   ]
 }
