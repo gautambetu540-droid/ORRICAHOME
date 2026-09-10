@@ -49,7 +49,7 @@
 
   <link
     rel="canonical"
-    href="/"
+    href="https://orricaedge.com/"
   >
 
 
@@ -74,7 +74,7 @@
 
   <meta
     property="og:url"
-    content="/"
+    content="https://orricaedge.com/"
   >
 
   <meta
@@ -149,6 +149,10 @@
     rel="stylesheet"
   >
 
+  <script>
+    document.documentElement.classList.add("js");
+  </script>
+
 
   <!-- =========================================================
        ORGANIZATION SCHEMA
@@ -163,8 +167,8 @@
       "OrricaEdge",
       "Orrica Edge Recruitment"
     ],
-    "url": "/",
-    "logo": "/assets/orrica-edge-logo.png",
+    "url": "https://orricaedge.com/",
+    "logo": "https://orricaedge.com/assets/orrica-edge-logo.png",
     "description": "Orrica Edge provides recruitment and staffing solutions across BPO, BFSI, customer support, sales, collections, non-voice and bulk hiring.",
     "email": "info@orricaedge.com",
     "telephone": "+91-9753791491"
@@ -182,7 +186,7 @@
     "@type": "WebSite",
     "name": "Orrica Edge",
     "alternateName": "OrricaEdge",
-    "url": "/"
+    "url": "https://orricaedge.com/"
   }
   </script>
 
@@ -1752,110 +1756,265 @@
 
 
     /* =========================================================
-       CTA
+       PREMIUM CTA
     ========================================================== */
 
     .cta {
 
-      position:
-        relative;
+      position: relative;
+      isolation: isolate;
 
-      width:
-        min(
-          1240px,
-          calc(100% - 48px)
-        );
+      width: min(1240px, calc(100% - 48px));
+      min-height: 430px;
 
-      margin:
-        0 auto 115px;
+      margin: 0 auto 115px;
+      padding: 78px 78px 76px;
 
-      padding:
-        72px;
+      overflow: hidden;
+      border-radius: 28px;
 
-      overflow:
-        hidden;
-
-      border-radius:
-        24px;
-
-      color:
-        #fff;
+      color: #fff;
 
       background:
         radial-gradient(
-          circle at 90% 12%,
-          rgba(255,255,255,.17),
-          transparent 25%
+          circle at 86% 16%,
+          rgba(255,255,255,.20),
+          transparent 23%
+        ),
+        radial-gradient(
+          circle at 5% 110%,
+          rgba(255,255,255,.08),
+          transparent 32%
         ),
         linear-gradient(
-          130deg,
-          #f45413,
-          #ff7134
+          135deg,
+          #f45112 0%,
+          #ff6525 52%,
+          #ff7740 100%
         );
 
       box-shadow:
-        0 25px 70px
-        rgba(184,67,20,.15);
+        0 30px 85px rgba(196,72,21,.18);
 
+      transform: translateZ(0);
     }
 
+    .cta::before {
+      content: "";
 
-    .cta h2 {
+      position: absolute;
+      inset: 1px;
 
-      position:
-        relative;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 27px;
 
-      z-index:
-        2;
-
-      max-width:
-        720px;
-
-      margin:
-        15px 0 30px;
-
-      font-family:
-        Sora;
-
-      font-size:
-        clamp(
-          34px,
-          4.2vw,
-          55px
-        );
-
-      line-height:
-        1.06;
-
-      letter-spacing:
-        -.06em;
-
+      pointer-events: none;
+      z-index: 1;
     }
-
 
     .cta::after {
+      content: "→";
 
-      content:
-        "→";
+      position: absolute;
+      z-index: 1;
 
-      position:
-        absolute;
+      right: -5px;
+      top: -82px;
 
-      right:
-        25px;
+      color: rgba(255,255,255,.105);
 
-      top:
-        -80px;
+      font: 300 360px/1 Arial, sans-serif;
 
-      color:
-        rgba(255,255,255,.1);
+      pointer-events: none;
+      user-select: none;
 
-      font:
-        300 350px/1
-        Arial;
+      transition: transform .8s var(--ease);
+      transform: translate3d(var(--cta-x, 0px), var(--cta-y, 0px), 0);
+    }
 
-      pointer-events:
-        none;
+    .cta:hover::after {
+      transform: translate3d(calc(var(--cta-x, 0px) - 10px), var(--cta-y, 0px), 0) scale(1.025);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 5;
+      max-width: 900px;
+    }
+
+    .cta .eyebrow {
+      color: rgba(255,255,255,.82);
+    }
+
+    .cta h2 {
+      position: relative;
+      z-index: 5;
+
+      max-width: 850px;
+      margin: 20px 0 20px;
+
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(42px, 5.2vw, 72px);
+      font-weight: 700;
+      line-height: .98;
+      letter-spacing: -.065em;
+
+      text-wrap: balance;
+    }
+
+    .cta h2 span {
+      display: block;
+      color: rgba(255,255,255,.92);
+    }
+
+    .cta-description {
+      position: relative;
+      z-index: 5;
+
+      max-width: 610px;
+      margin: 0 0 31px;
+
+      color: rgba(255,255,255,.79);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .cta .button.light {
+      position: relative;
+      z-index: 6;
+
+      min-height: 53px;
+      padding: 0 24px;
+
+      box-shadow: 0 14px 34px rgba(88,28,7,.16);
+    }
+
+    .cta .button.light span {
+      display: inline-flex;
+      transition: transform .25s var(--ease);
+    }
+
+    .cta .button.light:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 19px 40px rgba(88,28,7,.23);
+    }
+
+    .cta .button.light:hover span {
+      transform: translateX(5px);
+    }
+
+    .cta-content::after {
+      content: "";
+
+      position: absolute;
+      right: -110px;
+      bottom: -110px;
+
+      width: 190px;
+      height: 190px;
+
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 50%;
+
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,.035),
+        0 0 0 70px rgba(255,255,255,.02);
+
+      pointer-events: none;
+    }
+
+    /* =========================================================
+       CTA RESPONSIVE
+    ========================================================== */
+
+    @media (max-width: 900px) {
+
+      .cta {
+        padding: 65px 52px 68px;
+      }
+
+      .cta h2 {
+        max-width: 720px;
+        font-size: clamp(40px, 6vw, 60px);
+      }
+
+      .cta::after {
+        right: -30px;
+        top: -45px;
+        font-size: 280px;
+      }
+
+    }
+
+    @media (max-width: 760px) {
+
+      .cta {
+        width: calc(100% - 32px);
+        min-height: auto;
+        margin-bottom: 78px;
+        padding: 52px 28px 56px;
+        border-radius: 23px;
+      }
+
+      .cta::before {
+        border-radius: 22px;
+      }
+
+      .cta .eyebrow {
+        font-size: 10px;
+        letter-spacing: .14em;
+      }
+
+      .cta h2 {
+        max-width: 100%;
+        margin: 17px 0 18px;
+        font-size: clamp(38px, 11vw, 54px);
+        line-height: .99;
+      }
+
+      .cta-description {
+        max-width: 100%;
+        margin-bottom: 27px;
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .cta .button.light {
+        min-height: 50px;
+      }
+
+      .cta::after {
+        right: -55px;
+        top: -30px;
+        font-size: 210px;
+      }
+
+      .cta-content::after {
+        width: 130px;
+        height: 130px;
+        right: -95px;
+        bottom: -80px;
+      }
+
+    }
+
+    @media (max-width: 430px) {
+
+      .cta {
+        padding: 45px 23px 48px;
+      }
+
+      .cta h2 {
+        font-size: 39px;
+      }
+
+      .cta-description {
+        font-size: 13px;
+      }
+
+      .cta .button.light {
+        width: 100%;
+      }
 
     }
 
@@ -2487,27 +2646,25 @@
 
     .reveal {
 
-      opacity:
-        0;
-
-      transform:
-        translateY(25px);
+      opacity: 1;
+      transform: none;
 
       transition:
-        opacity .7s ease,
-        transform .7s var(--ease);
+        opacity .72s ease,
+        transform .72s var(--ease);
+
+      will-change: opacity, transform;
 
     }
 
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
 
-    .reveal.visible {
-
-      opacity:
-        1;
-
-      transform:
-        none;
-
+    .js .reveal.visible {
+      opacity: 1;
+      transform: none;
     }
 
 
@@ -3816,7 +3973,7 @@
 
 
     <!-- =========================================================
-         CTA
+         PREMIUM CTA
     ========================================================== -->
 
     <section
@@ -3825,23 +3982,33 @@
       aria-labelledby="contact-title"
     >
 
-      <div class="eyebrow">
-        Partner with Orrica Edge
+      <div class="cta-content">
+
+        <div class="eyebrow">
+          Partner with Orrica Edge
+        </div>
+
+        <h2 id="contact-title">
+          Build the team that
+          <span>moves your business forward.</span>
+        </h2>
+
+        <p class="cta-description">
+          Tell us what you’re hiring for. Orrica Edge connects you
+          with the right talent through focused recruitment,
+          staffing and high-volume hiring solutions.
+        </p>
+
+        <a
+          class="button light"
+          href="mailto:info@orricaedge.com"
+          aria-label="Talk to the Orrica Edge hiring team"
+        >
+          Talk to our hiring team
+          <span aria-hidden="true">→</span>
+        </a>
+
       </div>
-
-
-      <h2 id="contact-title">
-        Let's build the team that takes your business further.
-      </h2>
-
-
-      <a
-        class="button light"
-        href="mailto:info@orricaedge.com"
-      >
-        Talk to our hiring team
-        <span>→</span>
-      </a>
 
     </section>
 
@@ -4608,6 +4775,46 @@
 
 
     /* =========================================================
+       CTA MICRO-MOTION
+       Lightweight pointer movement; disabled for reduced motion.
+    ========================================================== */
+
+    (() => {
+
+      const cta = document.querySelector(".cta");
+
+      if (!cta || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+      }
+
+      let frame = 0;
+
+      cta.addEventListener("pointermove", (event) => {
+
+        cancelAnimationFrame(frame);
+
+        frame = requestAnimationFrame(() => {
+
+          const rect = cta.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width - .5;
+          const y = (event.clientY - rect.top) / rect.height - .5;
+
+          cta.style.setProperty("--cta-x", `${x * 8}px`);
+          cta.style.setProperty("--cta-y", `${y * 5}px`);
+
+        });
+
+      }, { passive: true });
+
+      cta.addEventListener("pointerleave", () => {
+        cta.style.setProperty("--cta-x", "0px");
+        cta.style.setProperty("--cta-y", "0px");
+      }, { passive: true });
+
+    })();
+
+
+    /* =========================================================
        FIX SAME-PAGE HASH NAVIGATION
        When user is already on homepage, /#about works.
     ========================================================== */
@@ -4620,7 +4827,7 @@
 
         link.addEventListener(
           "click",
-          () => {
+          (event) => {
 
             const target =
               link.getAttribute(
