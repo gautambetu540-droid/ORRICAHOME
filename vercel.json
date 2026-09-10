@@ -1,4 +1,7 @@
 {
+  "redirects": [
+    {"source":"/orrica-edge-home/index.html","destination":"/","permanent":true}
+  ],
   "rewrites": [
     {"source":"/","destination":"/orrica-edge-home/index.html"},
     {"source":"/jobs.html","destination":"/orrica-edge-home/jobs.html"},
