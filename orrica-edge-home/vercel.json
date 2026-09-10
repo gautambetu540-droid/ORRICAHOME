@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/jobs", "destination": "/data/jobs.json" }
+  ]
+}
