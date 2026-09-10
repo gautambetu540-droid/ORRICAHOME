@@ -11,9 +11,18 @@
     {"source":"/job","destination":"/orrica-edge-home/job.html"},
     {"source":"/job.html","destination":"/orrica-edge-home/job.html"},
     {"source":"/job.js","destination":"/orrica-edge-home/job.js"},
+    {"source":"/about","destination":"/orrica-edge-home/about.html"},
+    {"source":"/about.html","destination":"/orrica-edge-home/about.html"},
+    {"source":"/contact","destination":"/orrica-edge-home/contact.html"},
+    {"source":"/contact.html","destination":"/orrica-edge-home/contact.html"},
+    {"source":"/terms","destination":"/orrica-edge-home/terms.html"},
+    {"source":"/terms.html","destination":"/orrica-edge-home/terms.html"},
+    {"source":"/privacy","destination":"/orrica-edge-home/privacy.html"},
+    {"source":"/privacy.html","destination":"/orrica-edge-home/privacy.html"},
     {"source":"/data/:path*","destination":"/orrica-edge-home/data/:path*"},
     {"source":"/header-fix.css","destination":"/orrica-edge-home/header-fix.css"},
     {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
+    {"source":"/legal.css","destination":"/orrica-edge-home/legal.css"},
     {"source":"/assets/:path*","destination":"/orrica-edge-home/assets/:path*"},
     {"source":"/admin","destination":"https://orrica-edge-frontend-jana.vercel.app/admin"},
     {"source":"/admin/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/admin/:path*"},
@@ -21,13 +30,8 @@
     {"source":"/api/backend/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"}
   ],
   "headers": [
-    {
-      "source":"/",
-      "headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]
-    },
-    {
-      "source":"/jobs",
-      "headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]
-    }
+    {"source":"/","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
+    {"source":"/jobs","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
+    {"source":"/jobs.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]}
   ]
 }
