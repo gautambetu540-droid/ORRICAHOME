@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "https://orrica-edge-frontend-jana.vercel.app/admin"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "https://orrica-edge-frontend-jana.vercel.app/admin/:path*"
+    },
+    {
+      "source": "/_next/:path*",
+      "destination": "https://orrica-edge-frontend-jana.vercel.app/_next/:path*"
+    },
+    {
+      "source": "/api/backend/:path*",
+      "destination": "https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"
+    }
+  ]
+}
