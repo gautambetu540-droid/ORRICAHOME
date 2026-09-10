@@ -1,0 +1,38 @@
+[
+  {
+    "id": "customer-support-executive",
+    "title": "Customer Support Executive",
+    "team": "Customer Experience",
+    "location": "Gurugram, India",
+    "type": "Full-time",
+    "experience": "0-2 years",
+    "summary": "Be the helpful, confident voice customers remember for a leading customer experience brand.",
+    "description": "You will handle customer conversations, resolve queries with empathy, and help create an exceptional service experience. Clear communication and a customer-first mindset are essential.",
+    "skills": ["Excellent communication", "Customer empathy", "Basic computer skills"],
+    "postedAt": "2026-09-01"
+  },
+  {
+    "id": "banking-sales-officer",
+    "title": "Banking Sales Officer",
+    "team": "BFSI",
+    "location": "Delhi NCR",
+    "type": "Full-time",
+    "experience": "1-3 years",
+    "summary": "Drive customer acquisition and build trusted relationships for a leading banking partner.",
+    "description": "Own prospecting, explain financial products clearly, and deliver a high-quality onboarding journey. This role suits ambitious relationship builders who enjoy measurable impact.",
+    "skills": ["Relationship building", "Field sales", "Banking knowledge"],
+    "postedAt": "2026-08-29"
+  },
+  {
+    "id": "international-voice-process",
+    "title": "International Voice Process",
+    "team": "International BPO",
+    "location": "Noida, India",
+    "type": "Full-time",
+    "experience": "0-4 years",
+    "summary": "Support global customers in a fast-moving voice process with growth from day one.",
+    "description": "Deliver accurate, warm, and efficient support for international customers. You will receive process training and work with a team that values clarity, care, and performance.",
+    "skills": ["English fluency", "Active listening", "Problem solving"],
+    "postedAt": "2026-08-27"
+  }
+]
