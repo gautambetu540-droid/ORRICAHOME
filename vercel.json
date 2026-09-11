@@ -36,7 +36,8 @@
     {"source":"/api/backend/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"}
   ],
   "headers": [
-    {"source":"/","headers":[{"key":"Link","value":"</header-fix-home.css>; rel=stylesheet"}]},
+    {"source":"/","headers":[{"key":"Link","value":"</header-fix-home.css>; rel=stylesheet; as=style"}]},
+    {"source":"/orrica-edge-home/index.html","headers":[{"key":"Link","value":"</header-fix-home.css>; rel=stylesheet; as=style"}]},
     {"source":"/jobs","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
     {"source":"/jobs.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
     {"source":"/job","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
