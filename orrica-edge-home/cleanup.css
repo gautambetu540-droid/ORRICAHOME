@@ -1,11 +1,40 @@
 /* Footer cleanup only — do not change the site's global typography. */
 #site-footer ~ *{display:none!important}
 .footer-bottom,.footer-top,.footer-contact,.contact-strip,.sticky-contact,.bottom-contact{display:none!important}
-/* Keep the original homepage typography intact; footer typography is scoped to .rich-footer. */
 body{font-family:inherit!important}
 body>*:not(#site-footer){font-family:inherit}
 .rich-footer{font-family:Manrope,Arial,sans-serif}
 .rich-footer .footer-cta h2,.rich-footer .footer-brand strong{font-family:"Space Grotesk",Manrope,Arial,sans-serif}
 .rich-footer h4{font-family:Manrope,Arial,sans-serif}
-/* Logo is a real home link. */
 .footer-logo-home{cursor:pointer}
+
+/* HOMEPAGE — FINAL HEADER + HERO POLISH */
+.site-header{padding:14px 0!important;z-index:40!important}
+.site-header .container{width:min(1216px,calc(100% - 48px))!important}
+.site-header .nav{min-height:68px!important;height:68px!important;padding:6px 10px 6px 22px!important;gap:18px!important;border:1px solid rgba(150,196,235,.20)!important;border-radius:18px!important;background:rgba(3,19,38,.58)!important;box-shadow:0 12px 34px rgba(0,0,0,.10)!important;backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important}
+.site-header .brand-link{width:auto!important;min-width:150px!important}
+.site-header .brand-logo{width:150px!important;height:auto!important;max-height:42px!important;object-fit:contain!important}
+.site-header .oe-header-wordmark{display:inline-flex!important;align-items:baseline!important;gap:2px!important;white-space:nowrap!important;font-family:Sora,Inter,Arial,sans-serif!important;font-size:20px!important;line-height:1!important;letter-spacing:-.055em!important;font-weight:800!important;text-decoration:none!important}
+.site-header .oe-header-wordmark span{color:#fff!important;opacity:.98!important}
+.site-header .oe-header-wordmark b{color:#ff6b3d!important;font-weight:800!important}
+.site-header .nav-links{gap:27px!important;margin-left:auto!important}
+.site-header .nav-links a{color:#d7e5f5!important;font-size:13px!important;font-weight:700!important;line-height:1!important}
+.site-header .nav-links a:hover,.site-header .nav-links a:focus-visible{color:#fff!important}
+.site-header .nav-actions{gap:9px!important;flex-shrink:0!important}
+.site-header .nav-actions .button{min-height:44px!important;height:44px!important;padding:0 19px!important;font-size:12px!important;font-weight:800!important}
+.site-header .nav-actions .button.light{color:#13233a!important;background:#fff!important;box-shadow:0 8px 20px rgba(0,0,0,.08)!important}
+.site-header .nav-actions .button.orange{background:linear-gradient(135deg,#ff6b3d,#ff8755)!important;box-shadow:0 12px 25px rgba(255,107,61,.24)!important}
+.hero{min-height:760px!important}
+.hero-content{padding:132px 0 72px!important}
+.hero h1{max-width:735px!important;margin:18px 0 22px!important;font-size:clamp(58px,6.15vw,78px)!important;line-height:1.015!important;letter-spacing:-.062em!important}
+.hero-description{max-width:620px!important;font-size:17px!important;line-height:1.7!important}
+.hero-image{width:58%!important;object-position:58% center!important;opacity:.76!important;filter:saturate(.78) contrast(1.04)!important}
+.hero-overlay{background:linear-gradient(90deg,#031326 0%,rgba(3,19,38,.975) 28%,rgba(3,19,38,.73) 54%,rgba(3,19,38,.18) 78%,rgba(3,19,38,.56) 100%)!important}
+.hero-ring{opacity:.72!important;right:-250px!important;top:-245px!important;width:720px!important;height:720px!important}
+.hero-card{right:42px!important;bottom:48px!important;width:315px!important;padding:22px 24px!important;border-radius:20px!important;background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.065))!important;border:1px solid rgba(190,220,246,.24)!important;box-shadow:0 20px 50px rgba(0,0,0,.20)!important;backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important}
+.hero-card-label{font-size:10px!important;letter-spacing:.10em!important}
+.hero-card strong{font-size:30px!important;line-height:1.08!important}
+.hero-card p{font-size:12px!important;line-height:1.55!important}
+@media(max-width:1050px) and (min-width:769px){.site-header .nav{padding-left:18px!important}.site-header .brand-link{min-width:135px!important}.site-header .oe-header-wordmark{font-size:18px!important}.site-header .nav-links{gap:19px!important}.site-header .nav-links a{font-size:12px!important}.site-header .nav-actions .button{padding:0 14px!important;font-size:11px!important}.hero h1{max-width:650px!important;font-size:clamp(52px,6vw,68px)!important}.hero-description{max-width:560px!important;font-size:16px!important}.hero-card{right:28px!important;bottom:38px!important;width:285px!important}}
+@media(max-width:768px){.site-header{padding:10px 0!important}.site-header .container{width:calc(100% - 24px)!important}.site-header .nav{min-height:62px!important;height:62px!important;padding:6px 9px 6px 15px!important;border-radius:16px!important}.site-header .brand-link{min-width:auto!important}.site-header .oe-header-wordmark{font-size:18px!important}.site-header .nav-links{display:none!important}.site-header .nav-actions{margin-left:auto!important}.site-header .nav-actions .button{height:40px!important;min-height:40px!important;padding:0 14px!important;font-size:11px!important}.hero{min-height:720px!important;align-items:flex-start!important}.hero-content{padding:158px 0 62px!important}.hero h1{max-width:620px!important;font-size:clamp(46px,10vw,66px)!important;line-height:1.02!important;margin:16px 0 18px!important}.hero-description{max-width:590px!important;font-size:15px!important;line-height:1.65!important}.hero-image{width:100%!important;opacity:.34!important;object-position:62% center!important}.hero-overlay{background:linear-gradient(90deg,rgba(3,19,38,.99) 0%,rgba(3,19,38,.91) 48%,rgba(3,19,38,.62) 100%)!important}.hero-ring{right:-310px!important;top:-180px!important;opacity:.42!important}.hero-card{right:18px!important;bottom:24px!important;width:min(315px,calc(100% - 36px))!important;padding:18px 19px!important}}
+@media(max-width:520px){.site-header .nav-actions .button.light{display:none!important}.site-header .nav-actions .button.orange{height:38px!important;min-height:38px!important;padding:0 14px!important}.hero{min-height:700px!important}.hero-content{padding-top:145px!important}.hero h1{font-size:clamp(43px,11.5vw,58px)!important}.hero-description{font-size:14px!important;max-width:100%!important}.hero-card{bottom:18px!important;right:14px!important;width:calc(100% - 28px)!important}}
