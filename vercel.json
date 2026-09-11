@@ -26,6 +26,7 @@
     {"source":"/api/candidates/public","destination":"https://orrica-edge-backend.onrender.com/api/candidates/public"},
     {"source":"/data/:path*","destination":"/orrica-edge-home/data/:path*"},
     {"source":"/header-fix.css","destination":"/orrica-edge-home/header-fix.css"},
+    {"source":"/header-fix-home.css","destination":"/orrica-edge-home/header-fix-home.css"},
     {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
     {"source":"/legal.css","destination":"/orrica-edge-home/legal.css"},
     {"source":"/assets/:path*","destination":"/orrica-edge-home/assets/:path*"},
@@ -35,7 +36,7 @@
     {"source":"/api/backend/:path*","destination":"https://orrica-edge-frontend-jana.vercel.app/api/backend/:path*"}
   ],
   "headers": [
-    {"source":"/","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
+    {"source":"/","headers":[{"key":"Link","value":"</header-fix-home.css>; rel=stylesheet"}]},
     {"source":"/jobs","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
     {"source":"/jobs.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
     {"source":"/job","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
