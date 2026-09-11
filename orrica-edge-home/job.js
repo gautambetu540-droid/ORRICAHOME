@@ -1,13 +1,249 @@
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const safeHtml=s=>String(s??'').replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<iframe[\s\S]*?<\/iframe>/gi,'').replace(/ on[a-z]+\s*=\s*(["']).*?\1/gi,'').replace(/javascript:/gi,'');
-const text=s=>String(s??'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
-const params=new URLSearchParams(location.search);const id=params.get('id');const shouldApply=params.get('apply')==='1';let currentJob=null;
-const icon={pin:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.2c0 5.2-8 11-8 11s-8-5.8-8-11a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',brief:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7M3 12h18"/></svg>',route:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4M14 5h4M6 19 18 5M6 5h.01M18 19h.01"/></svg>',users:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 11a3 3 0 1 0 0-6M16 14a5 5 0 0 1 4.5 5"/></svg>',check:'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>'};
-const api=async(url,options={})=>{const r=await fetch(url,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});const data=await r.json().catch(()=>({}));if(!r.ok)throw new Error(data.message||'Request failed');return data};
-function setApplyVisible(show){const box=document.querySelector('#mobileApply');if(box)box.hidden=!show}
-function openApply(){if(!currentJob)return;const modal=document.querySelector('#applyModal');const body=document.querySelector('#applyBody');document.querySelector('#applyTitle').textContent=`Apply · ${currentJob.title}`;body.innerHTML=`<form class="form" id="applyForm"><div class="form-grid"><div class="field"><label>First name *</label><input name="firstName" required autocomplete="given-name" placeholder="Your first name"/></div><div class="field"><label>Last name</label><input name="lastName" autocomplete="family-name" placeholder="Your last name"/></div><div class="field"><label>Email *</label><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"/></div><div class="field"><label>Mobile number *</label><input type="tel" name="mobile" required autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number"/></div><div class="field"><label>City</label><input name="city" autocomplete="address-level2" placeholder="Your city"/></div><div class="field"><label>Highest qualification</label><input name="highestQualification" placeholder="e.g. Graduation"/></div><div class="field"><label>Experience</label><select name="experienceType"><option>Fresher</option><option>Experienced</option></select></div><div class="field"><label>Years of experience</label><input name="yearsOfExperience" inputmode="decimal" placeholder="0"/></div><div class="field full"><label>Resume / profile link</label><input name="resumeUrl" type="url" placeholder="Google Drive / LinkedIn / portfolio link (optional)"/></div><div class="field full"><label>Why are you a good fit?</label><textarea name="coverNote" placeholder="Tell us briefly about your relevant experience or strengths."></textarea></div></div><p class="form-note">By submitting, you agree that Orrica Edge may use the information provided to evaluate your application for this role.</p><div id="applyError" class="form-note" style="display:none;background:#fff1f0;color:#a1281c"></div><div class="form-actions"><button type="button" class="secondary" id="cancelApply">Cancel</button><button type="submit" class="apply-btn" style="width:auto;padding:0 24px">Submit application <span aria-hidden="true">→</span></button></div></form>`;modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';document.querySelector('#closeApply').onclick=closeApply;document.querySelector('#cancelApply').onclick=closeApply;document.querySelector('#applyForm').onsubmit=submitApplication;setTimeout(()=>document.querySelector('#applyForm input')?.focus(),50)}
-function closeApply(){const modal=document.querySelector('#applyModal');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
-async function submitApplication(e){e.preventDefault();const form=e.currentTarget;const submit=form.querySelector('button[type=submit]');const error=document.querySelector('#applyError');submit.disabled=true;submit.textContent='Submitting…';error.style.display='none';const fd=new FormData(form);const payload={firstName:String(fd.get('firstName')||'').trim(),lastName:String(fd.get('lastName')||'').trim(),email:String(fd.get('email')||'').trim(),mobile:String(fd.get('mobile')||'').trim(),city:String(fd.get('city')||'').trim(),highestQualification:String(fd.get('highestQualification')||'').trim(),experienceType:String(fd.get('experienceType')||'Fresher'),yearsOfExperience:String(fd.get('yearsOfExperience')||'0').trim(),resumeUrl:String(fd.get('resumeUrl')||'').trim(),coverNote:String(fd.get('coverNote')||'').trim(),jobId:String(currentJob.id||''),jobApplied:String(currentJob.title||''),source:'Public Job Page',appliedAt:new Date().toISOString()};try{const data=await api('/api/candidates/public',{method:'POST',body:JSON.stringify(payload)});if(!data.success)throw new Error(data.message||'Application failed');document.querySelector('#applyBody').innerHTML=`<div class="success"><div class="check">${icon.check}</div><h3>Application submitted</h3><p>Thanks for applying for <strong>${esc(currentJob.title)}</strong>. Your profile has been sent to the Orrica Edge recruitment team.</p>${data.candidateId?`<p style="margin-top:14px;font-size:12px">Application ID: <strong>${esc(data.candidateId)}</strong></p>`:''}<div style="margin-top:24px"><button class="apply-btn" id="doneApply">Done</button></div></div>`;document.querySelector('#doneApply').onclick=closeApply}catch(err){error.textContent=err instanceof Error?err.message:'Unable to submit application';error.style.display='block';submit.disabled=false;submit.textContent='Submit application →'}}
-function render(j){currentJob=j;document.title=`${j.title} | Orrica Edge`;const skills=j.skills.length?`<h2>What will help you thrive</h2><ul class="content-list">${j.skills.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:'';document.querySelector('#job').innerHTML=`<div class="job-shell"><div class="job-breadcrumb"><a href="/jobs">← All open roles</a><span>/</span><span>${esc(j.team)}</span></div><section class="job-hero"><div class="hero-main"><div class="eyebrow">${esc(j.category||j.team)}</div><h1>${esc(j.title)}</h1><div class="hero-meta"><span>${icon.pin}${esc(j.location||'India')}</span><span>${icon.brief}${esc(j.type)}</span><span>${icon.route}${esc(j.experience||'Open to relevant experience')}</span>${j.openings?`<span>${icon.users}${esc(j.openings)} opening${Number(j.openings)===1?'':'s'}</span>`:''}</div></div><aside class="hero-side"><div><div class="label">Ready to apply?</div><h3>Take the next step.</h3><p>Share your profile directly with the Orrica Edge recruitment team.</p></div><button class="apply-btn" id="desktopApply">Apply for this role <span aria-hidden="true">→</span></button></aside></section><section class="detail-layout"><div class="content"><article><h2>About the role</h2><div class="rich-job-content">${safeHtml(j.description)||'<p>No description provided.</p>'}</div><h2>Responsibilities</h2><div class="rich-job-content">${safeHtml(j.responsibilities)||'<p>Responsibilities will be shared with shortlisted candidates.</p>'}</div><h2>Requirements</h2><div class="rich-job-content">${safeHtml(j.requirements)||'<p>See the role details above.</p>'}</div>${skills}</article></div><aside class="job-sidebar"><div class="info-card"><h3>Job overview</h3><div class="info-row"><span>Company</span><span>${esc(j.company||'Orrica Edge')}</span></div><div class="info-row"><span>Location</span><span>${esc(j.location||'—')}</span></div><div class="info-row"><span>Work mode</span><span>${esc(j.workMode||j.mode||'—')}</span></div><div class="info-row"><span>Employment</span><span>${esc(j.type)}</span></div><div class="info-row"><span>Experience</span><span>${esc(j.experience||'—')}</span></div>${j.openings?`<div class="info-row"><span>Openings</span><span>${esc(j.openings)}</span></div>`:''}${j.salary?`<div class="info-row"><span>Salary</span><span>${esc(j.salary)}</span></div>`:''}</div></aside></section></div>`;document.querySelector('#desktopApply').onclick=openApply;setApplyVisible(true);document.querySelector('#mobileApplyBtn').onclick=openApply;if(shouldApply)setTimeout(openApply,180)}
-async function boot(){try{const data=await api('/api/jobs?public=1',{cache:'no-store'});const raw=Array.isArray(data)?data:(Array.isArray(data?.jobs)?data.jobs:[]);const j=raw.filter(x=>String(x.status??'Live').toLowerCase()==='live').map(x=>({...x,team:x.team||x.category||x.company||'Orrica Edge',type:x.type||x.employmentType||'Full-time',summary:x.summary||text(x.description).slice(0,220),skills:Array.isArray(x.skills)?x.skills:[]})).find(x=>String(x.id)===String(id));if(!j)throw new Error('Role not found');render(j)}catch(e){document.title='Role not found | Orrica Edge';setApplyVisible(false);document.querySelector('#job').innerHTML=`<section class="not-found"><h1>Role not found.</h1><p style="color:#738198">This role may have closed or is no longer available.</p><a class="apply-btn" style="display:inline-flex;width:auto;padding:0 22px;text-decoration:none" href="/jobs">Browse open roles</a></section>`}}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeApply()});document.querySelector('#applyModal')?.addEventListener('click',e=>{if(e.target===e.currentTarget)closeApply()});boot();
+const esc = (value) => String(value ?? '').replace(/[&<>"']/g, (char) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+}[char]));
+
+const safeHtml = (value) => String(value ?? '')
+  .replace(/<script[\s\S]*?<\/script>/gi, '')
+  .replace(/<iframe[\s\S]*?<\/iframe>/gi, '')
+  .replace(/<object[\s\S]*?<\/object>/gi, '')
+  .replace(/<embed[^>]*>/gi, '')
+  .replace(/javascript\s*:/gi, '')
+  .replace(/\s+on[a-z]+\s*=\s*(["']).*?\1/gi, '')
+  .replace(/\s+on[a-z]+\s*=\s*[^\s>]+/gi, '');
+
+const text = (value) => String(value ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const asArray = (value) => Array.isArray(value) ? value.filter((item) => item != null && String(item).trim()) : [];
+
+const params = new URLSearchParams(location.search);
+const id = params.get('id');
+const shouldApply = params.get('apply') === '1';
+let currentJob = null;
+
+const icon = {
+  pin: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10.2c0 5.2-8 11-8 11s-8-5.8-8-11a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/></svg>',
+  brief: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7M3 12h18"/></svg>',
+  route: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4M14 5h4M6 19 18 5M6 5h.01M18 19h.01"/></svg>',
+  users: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0M16 11a3 3 0 1 0 0-6M16 14a5 5 0 0 1 4.5 5"/></svg>',
+  check: '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg>'
+};
+
+const api = async (url, options = {}) => {
+  const response = await fetch(url, {
+    ...options,
+    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) }
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || 'Request failed');
+  return data;
+};
+
+function setApplyVisible(show) {
+  const box = document.querySelector('#mobileApply');
+  if (box) box.hidden = !show;
+}
+
+function closeApply() {
+  const modal = document.querySelector('#applyModal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function openApply() {
+  if (!currentJob) return;
+  const modal = document.querySelector('#applyModal');
+  const body = document.querySelector('#applyBody');
+  const title = document.querySelector('#applyTitle');
+  if (!modal || !body || !title) return;
+
+  title.textContent = `Apply · ${currentJob.title}`;
+  body.innerHTML = `<form class="form" id="applyForm">
+    <div class="form-grid">
+      <div class="field"><label>First name *</label><input name="firstName" required autocomplete="given-name" placeholder="Your first name"/></div>
+      <div class="field"><label>Last name</label><input name="lastName" autocomplete="family-name" placeholder="Your last name"/></div>
+      <div class="field"><label>Email *</label><input type="email" name="email" required autocomplete="email" placeholder="you@example.com"/></div>
+      <div class="field"><label>Mobile number *</label><input type="tel" name="mobile" required autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number"/></div>
+      <div class="field"><label>City</label><input name="city" autocomplete="address-level2" placeholder="Your city"/></div>
+      <div class="field"><label>Highest qualification</label><input name="highestQualification" placeholder="e.g. Graduation"/></div>
+      <div class="field"><label>Experience</label><select name="experienceType"><option>Fresher</option><option>Experienced</option></select></div>
+      <div class="field"><label>Years of experience</label><input name="yearsOfExperience" inputmode="decimal" placeholder="0"/></div>
+      <div class="field full"><label>Resume / profile link</label><input name="resumeUrl" type="url" placeholder="Google Drive / LinkedIn / portfolio link (optional)"/></div>
+      <div class="field full"><label>Why are you a good fit?</label><textarea name="coverNote" placeholder="Tell us briefly about your relevant experience or strengths."></textarea></div>
+    </div>
+    <p class="form-note">By submitting, you agree that Orrica Edge may use the information provided to evaluate your application for this role.</p>
+    <div id="applyError" class="form-note" style="display:none;background:#fff1f0;color:#a1281c"></div>
+    <div class="form-actions"><button type="button" class="secondary" id="cancelApply">Cancel</button><button type="submit" class="apply-btn" style="width:auto;padding:0 24px">Submit application <span aria-hidden="true">→</span></button></div>
+  </form>`;
+
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  document.querySelector('#closeApply')?.addEventListener('click', closeApply, { once: true });
+  document.querySelector('#cancelApply')?.addEventListener('click', closeApply, { once: true });
+  document.querySelector('#applyForm')?.addEventListener('submit', submitApplication, { once: true });
+  setTimeout(() => document.querySelector('#applyForm input')?.focus(), 50);
+}
+
+async function submitApplication(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const submit = form.querySelector('button[type="submit"]');
+  const error = document.querySelector('#applyError');
+  if (!submit || !error || !currentJob) return;
+
+  submit.disabled = true;
+  submit.textContent = 'Submitting…';
+  error.style.display = 'none';
+
+  const fd = new FormData(form);
+  const payload = {
+    firstName: String(fd.get('firstName') || '').trim(),
+    lastName: String(fd.get('lastName') || '').trim(),
+    email: String(fd.get('email') || '').trim(),
+    mobile: String(fd.get('mobile') || '').trim(),
+    city: String(fd.get('city') || '').trim(),
+    highestQualification: String(fd.get('highestQualification') || '').trim(),
+    experienceType: String(fd.get('experienceType') || 'Fresher'),
+    yearsOfExperience: String(fd.get('yearsOfExperience') || '0').trim(),
+    resumeUrl: String(fd.get('resumeUrl') || '').trim(),
+    coverNote: String(fd.get('coverNote') || '').trim(),
+    jobId: String(currentJob.id || ''),
+    jobApplied: String(currentJob.title || ''),
+    source: 'Public Job Page',
+    appliedAt: new Date().toISOString()
+  };
+
+  try {
+    const data = await api('/api/candidates/public', { method: 'POST', body: JSON.stringify(payload) });
+    if (!data.success) throw new Error(data.message || 'Application failed');
+    document.querySelector('#applyBody').innerHTML = `<div class="success"><div class="check">${icon.check}</div><h3>Application submitted</h3><p>Thanks for applying for <strong>${esc(currentJob.title)}</strong>. Your profile has been sent to the Orrica Edge recruitment team.</p>${data.candidateId ? `<p style="margin-top:14px;font-size:12px">Application ID: <strong>${esc(data.candidateId)}</strong></p>` : ''}<div style="margin-top:24px"><button class="apply-btn" id="doneApply">Done</button></div></div>`;
+    document.querySelector('#doneApply')?.addEventListener('click', closeApply, { once: true });
+  } catch (errorValue) {
+    error.textContent = errorValue instanceof Error ? errorValue.message : 'Unable to submit application';
+    error.style.display = 'block';
+    submit.disabled = false;
+    submit.textContent = 'Submit application →';
+  }
+}
+
+function normalizeJob(job) {
+  const skills = asArray(job.skills || job.skillTags);
+  const benefits = asArray(job.benefits);
+  return {
+    ...job,
+    id: job.id ?? job.jobId ?? '',
+    title: String(job.title || 'Untitled role').trim(),
+    company: String(job.company || 'Orrica Edge').trim(),
+    team: String(job.team || job.category || job.company || 'Orrica Edge').trim(),
+    category: String(job.category || job.team || 'Open role').trim(),
+    location: String(job.location || 'India').trim(),
+    type: String(job.type || job.employmentType || 'Full-time').trim(),
+    workMode: String(job.workMode || job.mode || '').trim(),
+    experience: String(job.experience || 'Open to relevant experience').trim(),
+    description: job.description || '',
+    responsibilities: job.responsibilities || '',
+    requirements: job.requirements || '',
+    salary: String(job.salary || '').trim(),
+    openings: job.openings ?? '',
+    skills,
+    benefits,
+    summary: job.summary || text(job.description).slice(0, 220)
+  };
+}
+
+function render(job) {
+  currentJob = job;
+  document.title = `${job.title} | Orrica Edge`;
+
+  const skills = job.skills.length
+    ? `<h2>What will help you thrive</h2><div class="skill-tags">${job.skills.map((skill) => `<span>${esc(skill)}</span>`).join('')}</div>`
+    : '';
+
+  const benefits = job.benefits.length
+    ? `<h2>Benefits</h2><ul class="content-list">${job.benefits.map((benefit) => `<li>${esc(benefit)}</li>`).join('')}</ul>`
+    : '';
+
+  const workModeMeta = job.workMode ? `<span>${icon.brief}${esc(job.workMode)}</span>` : '';
+  const openingsMeta = job.openings !== '' && job.openings != null
+    ? `<span>${icon.users}${esc(job.openings)} opening${Number(job.openings) === 1 ? '' : 's'}</span>`
+    : '';
+
+  document.querySelector('#job').innerHTML = `<div class="job-shell">
+    <div class="job-breadcrumb"><a href="/jobs">← All open roles</a><span>/</span><span>${esc(job.team)}</span></div>
+    <section class="job-hero">
+      <div class="hero-main">
+        <div class="eyebrow">${esc(job.category)}</div>
+        <h1>${esc(job.title)}</h1>
+        <div class="hero-meta">
+          <span>${icon.pin}${esc(job.location)}</span>
+          <span>${icon.brief}${esc(job.type)}</span>
+          <span>${icon.route}${esc(job.experience)}</span>
+          ${workModeMeta}
+          ${openingsMeta}
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div><div class="label">Ready to apply?</div><h3>Take the next step.</h3><p>Share your profile directly with the Orrica Edge recruitment team.</p></div>
+        <button class="apply-btn" id="desktopApply" type="button">Apply for this role <span aria-hidden="true">→</span></button>
+      </aside>
+    </section>
+    <section class="detail-layout">
+      <div class="content"><article>
+        <h2>About the role</h2>
+        <div class="rich-job-content">${safeHtml(job.description) || '<p>No description provided.</p>'}</div>
+        <h2>Responsibilities</h2>
+        <div class="rich-job-content">${safeHtml(job.responsibilities) || '<p>Responsibilities will be shared with shortlisted candidates.</p>'}</div>
+        <h2>Requirements</h2>
+        <div class="rich-job-content">${safeHtml(job.requirements) || '<p>See the role details above.</p>'}</div>
+        ${skills}
+        ${benefits}
+      </article></div>
+      <aside class="job-sidebar"><div class="info-card">
+        <h3>Job overview</h3>
+        <div class="info-row"><span>Company</span><span>${esc(job.company)}</span></div>
+        <div class="info-row"><span>Location</span><span>${esc(job.location)}</span></div>
+        ${job.workMode ? `<div class="info-row"><span>Work mode</span><span>${esc(job.workMode)}</span></div>` : ''}
+        <div class="info-row"><span>Employment</span><span>${esc(job.type)}</span></div>
+        <div class="info-row"><span>Experience</span><span>${esc(job.experience)}</span></div>
+        ${job.openings !== '' && job.openings != null ? `<div class="info-row"><span>Openings</span><span>${esc(job.openings)}</span></div>` : ''}
+        ${job.salary ? `<div class="info-row"><span>Salary</span><span>${esc(job.salary)}</span></div>` : ''}
+        <div class="info-row"><span>Category</span><span>${esc(job.category)}</span></div>
+      </div></aside>
+    </section>
+  </div>`;
+
+  document.querySelector('#desktopApply')?.addEventListener('click', openApply);
+  document.querySelector('#mobileApplyBtn')?.addEventListener('click', openApply);
+  setApplyVisible(true);
+  if (shouldApply) setTimeout(openApply, 180);
+}
+
+async function boot() {
+  try {
+    if (!id) throw new Error('Missing role id');
+    const data = await api('/api/jobs?public=1', { cache: 'no-store' });
+    const raw = Array.isArray(data) ? data : (Array.isArray(data?.jobs) ? data.jobs : []);
+    const liveJobs = raw
+      .filter((job) => String(job?.status ?? 'Live').toLowerCase() === 'live')
+      .map(normalizeJob);
+    const job = liveJobs.find((item) => String(item.id) === String(id));
+    if (!job) throw new Error('Role not found');
+    render(job);
+  } catch (errorValue) {
+    document.title = 'Role not found | Orrica Edge';
+    setApplyVisible(false);
+    const root = document.querySelector('#job');
+    if (root) root.innerHTML = `<section class="not-found"><h1>Role not found.</h1><p style="color:#738198">This role may have closed or is no longer available.</p><a class="apply-btn" style="display:inline-flex;width:auto;padding:0 22px;text-decoration:none" href="/jobs">Browse open roles</a></section>`;
+  }
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeApply();
+});
+
+document.querySelector('#applyModal')?.addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) closeApply();
+});
+
+boot();
