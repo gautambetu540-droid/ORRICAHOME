@@ -164,6 +164,15 @@ function render(job) {
     ? `<h2>Benefits</h2><ul class="content-list">${job.benefits.map((benefit) => `<li>${esc(benefit)}</li>`).join('')}</ul>`
     : '';
 
+  const disclaimer = `<section class="job-disclaimer" aria-label="Important notice">
+    <div class="job-disclaimer-icon" aria-hidden="true">!</div>
+    <div class="job-disclaimer-copy">
+      <h3>Important Notice</h3>
+      <p>Orrica Edge never asks candidates to pay any fee for job applications, assessments, interviews, or recruitment. If anyone asks you for money in the name of Orrica Edge, please do not make any payment and report it to us immediately.</p>
+    </div>
+  </section>
+  <a class="whatsapp-channel-cta" href="https://whatsapp.com/channel/0029VbAsVFr4Y9lwo6JDRA2t" target="_blank" rel="noopener noreferrer" aria-label="Join Orrica Edge WhatsApp Channel">Join Orrica Edge WhatsApp Channel <span aria-hidden="true">→</span></a>`;
+
   const workModeMeta = job.workMode ? `<span>${icon.brief}${esc(job.workMode)}</span>` : '';
   const openingsMeta = job.openings !== '' && job.openings != null
     ? `<span>${icon.users}${esc(job.openings)} opening${Number(job.openings) === 1 ? '' : 's'}</span>`
@@ -198,6 +207,7 @@ function render(job) {
         <div class="rich-job-content">${safeHtml(job.requirements) || '<p>See the role details above.</p>'}</div>
         ${skills}
         ${benefits}
+        ${disclaimer}
       </article></div>
       <aside class="job-sidebar"><div class="info-card">
         <h3>Job overview</h3>
