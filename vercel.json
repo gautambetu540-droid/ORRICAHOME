@@ -23,6 +23,7 @@
     {"source":"/cookies.html","destination":"/orrica-edge-home/cookies.html"},
     {"source":"/api/jobs","destination":"https://orrica-edge-backend.onrender.com/api/jobs"},
     {"source":"/api/jobs/:id","destination":"https://orrica-edge-backend.onrender.com/api/jobs/:id"},
+    {"source":"/api/candidates/public","destination":"https://orrica-edge-backend.onrender.com/api/candidates/public"},
     {"source":"/data/:path*","destination":"/orrica-edge-home/data/:path*"},
     {"source":"/header-fix.css","destination":"/orrica-edge-home/header-fix.css"},
     {"source":"/site.css","destination":"/orrica-edge-home/site.css"},
