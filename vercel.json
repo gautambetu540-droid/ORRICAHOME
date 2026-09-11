@@ -37,6 +37,8 @@
   "headers": [
     {"source":"/","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
     {"source":"/jobs","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
-    {"source":"/jobs.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]}
+    {"source":"/jobs.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
+    {"source":"/job","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]},
+    {"source":"/job.html","headers":[{"key":"Link","value":"</header-fix.css>; rel=stylesheet"}]}
   ]
 }
